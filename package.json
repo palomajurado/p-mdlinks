@@ -1,0 +1,22 @@
+{
+    "name": "md-links",
+    "version": "1.0.0",
+    "description": "MarkDown Links Library",
+    "main": "index.js",
+    "directories": {
+        "test": "test"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/yeniferPaloma/LIM012-fe-md-links.git"
+    },
+    "author": "Yenifer Paloma",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links/issues"
+    },
+    "homepage": "https://github.com/yeniferPaloma/LIM012-fe-md-links#readme"
+}
