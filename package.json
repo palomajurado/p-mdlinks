@@ -1,22 +1,38 @@
 {
-    "name": "md-links",
-    "version": "1.0.0",
-    "description": "MarkDown Links Library",
+    "name": "lim012-fe-md-links",
+    "version": "0.1.0",
+    "description": "Reader of links in a file Markdown",
     "main": "index.js",
-    "directories": {
-        "test": "test"
-    },
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "build": "babel src -d lib",
+        "test": "jest --coverage",
+        "lint": "eslint src/index.js"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/yeniferPaloma/LIM012-fe-md-links.git"
     },
+    "keywords": [
+        "markdown"
+    ],
     "author": "Yenifer Paloma",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links/issues"
     },
-    "homepage": "https://github.com/yeniferPaloma/LIM012-fe-md-links#readme"
+    "homepage": "https://github.com/yeniferPaloma/LIM012-fe-md-links#readme",
+    "devDependencies": {
+        "@babel/cli": "7.8.4",
+        "@babel/core": "7.9.0",
+        "@babel/preset-env": "7.9.5",
+        "eslint": "6.8.0",
+        "eslint-config-airbnb-base": "14.1.0",
+        "eslint-plugin-import": "2.20.2",
+        "eslint-plugin-jest": "23.8.2",
+        "jest": "25.3.0"
+    },
+    "dependencies": {
+        "mocks": "0.0.15",
+        "node-fetch": "2.6.0"
+    }
 }
