@@ -1,14 +1,14 @@
 
-![Build Status](https://img.shields.io/badge/nodeJs-100%25-green) ![Coverage Status](https://img.shields.io/badge/coverage-100%25-magenta) ![npm dependents](https://img.shields.io/badge/dependencias-4-pink)
-<section align="center">
-  <img width="593" height="203"  src="https://storage.googleapis.com/md-links/titleRMC.png">
-</section>
-<section align="center">
-  <img width="1500" height="180" src="https://storage.googleapis.com/md-links/pMD.png">
-</section>
-<section align="center">
+![Coverage Status](https://img.shields.io/badge/coverage-100%25-magenta) ![npm dependents](https://img.shields.io/badge/dependencias-4-pink)
+<p align="center">
+  <img src="https://storage.googleapis.com/md-links/titleRMC.png">
+</p>
+<p align="center">
+  <img src="https://storage.googleapis.com/md-links/pMD.png">
+</p>
+<p align="center">
   <img width="972" height="1380" src="https://storage.googleapis.com/md-links/fcFinal.png">
-</section>
+</p>
 
 
 
@@ -16,7 +16,7 @@
 ```bash
 npm install yeniferPaloma/md-links
 ```
-<!-- <section align="center">![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)</section> -->
+<!-- <p align="center">![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)</p> -->
 
 ---
 
