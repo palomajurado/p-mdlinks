@@ -1,38 +1,44 @@
 {
-    "name": "lim012-fe-md-links",
-    "version": "0.1.0",
-    "description": "Reader of links in a file Markdown",
-    "main": "index.js",
-    "scripts": {
-        "build": "babel src -d lib",
-        "test": "jest --coverage",
-        "lint": "eslint src/index.js"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/yeniferPaloma/LIM012-fe-md-links.git"
-    },
-    "keywords": [
-        "markdown"
-    ],
-    "author": "Yenifer Paloma",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links/issues"
-    },
-    "homepage": "https://github.com/yeniferPaloma/LIM012-fe-md-links#readme",
-    "devDependencies": {
-        "@babel/cli": "7.8.4",
-        "@babel/core": "7.9.0",
-        "@babel/preset-env": "7.9.5",
-        "eslint": "6.8.0",
-        "eslint-config-airbnb-base": "14.1.0",
-        "eslint-plugin-import": "2.20.2",
-        "eslint-plugin-jest": "23.8.2",
-        "jest": "25.3.0"
-    },
-    "dependencies": {
-        "mocks": "0.0.15",
-        "node-fetch": "2.6.0"
-    }
+  "name": "test-md-links",
+  "version": "1.0.0",
+  "description": "Test create md-links library",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src --color",
+    "build": "npx babel src --out-dir lib --ignore node_modules",
+    "test": "jest --coverage",
+    "p": "prettier --write 'src/**/*.js'",
+    "p:w": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christhoph/test-md-links.git"
+  },
+  "author": "CS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/christhoph/test-md-links/issues"
+  },
+  "homepage": "https://github.com/christhoph/test-md-links#readme",
+  "dependencies": {
+    "axios": "0.19.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "onchange": "^6.1.1",
+    "prettier": "^2.0.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babel-jest": "25.4.0",
+    "babel-preset-minify": "0.5.1",
+    "jest": "^25.4.0"
+  }
 }
