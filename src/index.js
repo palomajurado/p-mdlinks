@@ -84,8 +84,8 @@ const mdLinks = (route, options) =>
     } else reject(new Error('Path: NOT FOUND'));
   });
 
-mdLinks('./README.md')
-  .then((res) => console.log('file without validate: ', res))
-  .catch(console.log);
+// mdLinks('./README.md')
+//   .then((res) => console.log('file without validate: ', res))
+//   .catch(console.log);
 
 module.exports = mdLinks;
