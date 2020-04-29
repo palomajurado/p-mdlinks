@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christhoph/test-md-links.git"
+    "url": "git+https://github.com/yeniferPaloma/test-md-links.git"
   },
   "author": "CS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christhoph/test-md-links/issues"
+    "url": "https://github.com/yeniferPaloma/test-md-links/issues"
   },
-  "homepage": "https://github.com/christhoph/test-md-links#readme",
+  "homepage": "https://github.com/yeniferPaloma/test-md-links#readme",
   "dependencies": {
     "axios": "0.19.2",
     "eslint": "^6.8.0",
