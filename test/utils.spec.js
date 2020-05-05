@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-const { getPath } = require('../lib/shortFunctions');
-const { isDirectory } = require('../lib/shortFunctions');
-const { isFile } = require('../lib/shortFunctions');
-const { checkMD } = require('../lib/shortFunctions');
+const { getPath } = require('../dist/utils');
+const { isDirectory } = require('../dist/utils');
+const { isFile } = require('../dist/utils');
+const { checkMD } = require('../dist/utils');
 
 describe('Read the path', () => {
   it('Should return a absolute path', () => {

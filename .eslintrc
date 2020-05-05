@@ -15,6 +15,7 @@
     "space-before-function-paren": 0,
     "new-cap": 0,
     "prettier/prettier": 2,
+
     "indent": ["error", 2]
   }
 }

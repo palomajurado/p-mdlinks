@@ -1,27 +1,29 @@
 {
-  "name": "test-md-links",
-  "version": "1.0.0",
+  "name": "yp-md-links",
+  "version": "1.5.2",
   "description": "Test create md-links library",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "lint": "eslint src --color",
-    "build": "npx babel src --out-dir lib --ignore node_modules",
-    "test": "jest --coverage",
+    "build": "npx babel src --out-dir dist --ignore node_modules",
     "p": "prettier --write 'src/**/*.js'",
-    "p:w": "onchange 'src/**/*.js' -- prettier --write {{changed}}"
+    "p:w": "onchange 'src/**/*.js' -- prettier --write {{changed}}",
+    "test": "jest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/christhoph/test-md-links.git"
+    "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links"
   },
   "author": "CS",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/christhoph/test-md-links/issues"
+    "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links/issues"
   },
-  "homepage": "https://github.com/christhoph/test-md-links#readme",
+  "homepage": "https://yeniferpaloma.github.io/LIM012-fe-md-links",
   "dependencies": {
-    "axios": "0.19.2",
+    "axios": "^0.19.2",
+    "chalk": "^4.0.0",
+    "commander": "^5.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-config-standard": "^14.1.1",
@@ -37,8 +39,17 @@
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",
-    "babel-jest": "25.4.0",
-    "babel-preset-minify": "0.5.1",
+    "babel-jest": "^25.4.0",
+    "babel-preset-minify": "^0.5.1",
     "jest": "^25.4.0"
-  }
+  },
+  "bin": "cli.js",
+  "keywords": ["npm", "nodeJS", "md-links"],
+  "files": [
+    "index.js",
+    "cli.js",
+    "dist/cli.js",
+    "dist/index.js",
+    "dist/utils.js"
+  ]
 }
