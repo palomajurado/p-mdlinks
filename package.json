@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links"
+    "url": "git+https://github.com/yeniferPaloma/test-md-links.git"
   },
-  "author": "CS",
+  "author": "YP",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yeniferPaloma/LIM012-fe-md-links/issues"
+    "url": "https://github.com/yeniferPaloma/test-md-links/issues"
   },
-  "homepage": "https://yeniferpaloma.github.io/LIM012-fe-md-links",
+  "homepage": "https://github.com/yeniferPaloma/test-md-links#readme",
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
