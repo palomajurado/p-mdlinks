@@ -10,28 +10,76 @@
   <img src="https://storage.googleapis.com/md-links/fcFinal%20(3).png">
 </p>
 
+---
+
 [![Npm](https://img.shields.io/badge/npm-v6.12.1-orchid)](https://www.npmjs.com/)
 
-## INSTALL USING NPM
-
-```bash
-npm install yeniferPaloma/md-links
-```
+## CLI (Command Line Interface - Interfaz de Línea de Comando)
 
 <!-- <p align="center">![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)</p> -->
 
----
-
-## CLI to execute at terminal
+You can install CLI locally or globally:
 
 ```bash
-md-links ./directory
+$ npm install yp-md-links
 
-md-links ./directory --validate
+$ npm install -g yp-md-links
+```
 
-md-links ./directory --stats
+Now, you can try whith this command:
 
-md-links ./directory --validate --stats
+```bash
+$ npx yp-md-links <path-to-file> [options]
+```
+
+For example:
+
+```bash
+$ npx yp-md-links ./some/example.md
+
+./some/example.md http://algo.com/2/3/ Link a algo
+./some/example.md https://otra-cosa.net/algun-doc.html algún doc
+./some/example.md http://google.com/ Google
+```
+
+#### OPTIONS
+
+##### `-v | --validate`
+
+You can pass _validate_ option for check and validate all links in your file or files markdown:
+
+```bash
+$ npx yp-md-links ./some/example.md -v
+$ npx yp-md-links ./some/example.md --validate
+
+./some/example.md http://algo.com/2/3/ ok 200 Link to something
+./some/example.md https://otra-cosa.net/algun-doc.html fail 404 some file
+./some/example.md http://google.com/ ok 301 Google
+```
+
+##### `-s | --stats`
+
+You can pass _stats_ option for get information about all links in your file or files markdown:
+
+```bash
+$ npx yp-md-links ./some/ -s
+$ npx yp-md-links ./some/example.md --stats
+
+Total: 3
+Unique: 3
+```
+
+##### `-v -s | --validate --stats`
+
+You can pass both option and get more information about all links in your file or files markdown:
+
+```bash
+$ npx yp-md-links some -v -s
+$ npx yp-md-links some/example.md --validate --stats
+
+Total: 3
+Unique: 3
+Broken: 1
 ```
 
 <!-- ![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif) -->
@@ -41,25 +89,35 @@ md-links ./directory --validate --stats
 ## Documentation
 
 ```javascript
-const mdLinks = require('md-links');
+// ES6
+import mdLinks from 'yp-md-links';
+// CommonJS
+const mdLinks = require('yp-md-links');
 
-mdLinks('./some/example.md')
-  .then((links) => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
-
-mdLinks('./some/example.md', { validate: true })
-  .then((links) => {
-    // => [{ href, text, file, status, ok }]
-  })
-  .catch(console.error);
-
-mdLinks('./some/dir')
-  .then((links) => {
-    // => [{ href, text, file }]
-  })
-  .catch(console.error);
+mdLinks('src')
+  .then((res) => console.log('dir without validate: ', res))
+  .catch(console.log);
+mdLinks('./src/', { validate: true, stats: true })
+  .then((res) => console.log('dir with validate: ', res))
+  .catch(console.log);
+mdLinks('README.md')
+  .then((res) => console.log('file without validate: ', res))
+  .catch(console.log);
+mdLinks('README.md', { validate: true })
+  .then((res) => console.log('file with validate: ', res))
+  .catch(console.log);
+mdLinks('README.md', { stats: true })
+  .then((res) => console.log('file with stats: ', res))
+  .catch(console.log);
+mdLinks('pepe1')
+  .then((res) => console.log('dir false: ', res))
+  .catch(console.log);
+mdLinks('read.js')
+  .then((res) => console.log('js file false: ', res))
+  .catch(console.log);
+mdLinks('read.md')
+  .then((res) => console.log('md file false: ', res))
+  .catch(console.log);
 ```
 
 ### Dependencies

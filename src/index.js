@@ -1,12 +1,7 @@
 import fs from 'fs';
 import axios from 'axios';
-import {
-  checkMD,
-  isDirectory,
-  isFile,
-  getPath,
-  createId,
-} from './shortFunctions';
+import chalk from 'chalk';
+import { checkMD, isDirectory, isFile, getPath, createId } from './utils';
 
 const expectMDLink = /\[([^\]]*)\]\(([^)]*)\)/g;
 const filesMDLinks = [];
@@ -80,12 +75,19 @@ const mdLinks = (route, options) =>
             });
           } else resolve(links);
         })
-        .catch((err) => reject(err));
-    } else reject(new Error('Path: NOT FOUND'));
+        .catch(() =>
+          reject(
+            new Error(
+              `${chalk
+                .bgRgb(255, 0, 255)
+                .yellowBright.bold(
+                  " ☝  We couldn't find links in this path -->  "
+                )} ${chalk.rgb(127, 255, 255).bold.underline(route)}`
+            )
+          )
+        );
+    } else reject(new Error('⚠️   Path: NOT FOUND ⚠️  '));
   });
 
-mdLinks('./README.md')
-  .then((res) => console.log('file without validate: ', res))
-  .catch(console.log);
-
 module.exports = mdLinks;
+module.exports = linkValidate;

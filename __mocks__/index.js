@@ -1,0 +1,3 @@
+// this is just a default mock...
+// we'll override it in our test with something more specific
+export default jest.fn(() => Promise.resolve({ data: {} }));
