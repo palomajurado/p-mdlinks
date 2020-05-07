@@ -1,8 +1,7 @@
-import mdLinks from './index';
+import { mdLinks } from './index';
 import chalk from 'chalk';
 
 // Este sera el archivo que contendra la funcion a ejecutarse en el CLI
-
 const linksStats = (links, isValidate) => {
   const total = links.length;
   const arrHref = links.map(({ href }) => href);
@@ -13,7 +12,6 @@ const linksStats = (links, isValidate) => {
   const successMessage = chalk.green(
     `✔ Total : ${total}\n✔ Unique : ${unique}`
   );
-
   console.log(
     isValidate
       ? `${successMessage}\n${chalk.red(`✖ Broken : ${broken}`)}`
@@ -29,9 +27,9 @@ const cli = (path, options) => {
         if (Array.isArray(links) && !!options && options.validate) {
           if (options.stats) linksStats(links, true);
           else
-            links.forEach(({ href, status, statusText, text }) => {
+            links.forEach(({ file, href, status, statusText, text }) => {
               console.log(
-                `${chalk.yellow(path)} ${chalk.cyan(href)} ${chalk.magenta(
+                `${chalk.yellow(file)} ${chalk.cyan(href)} ${chalk.magenta(
                   statusText
                 )} ${chalk.magenta(status)} ${chalk.blue(text)}`
               );
@@ -39,9 +37,9 @@ const cli = (path, options) => {
         } else if (Array.isArray(links) && !!options && options.stats)
           linksStats(links);
         else
-          links.forEach(({ href, text }) =>
+          links.forEach(({ file, href, text }) =>
             console.log(
-              `⨭ ${chalk.yellow.underline(path)} 🡲 ${chalk.cyanBright(
+              `⨭ ${chalk.yellow.underline(file)} 🡲 ${chalk.cyanBright(
                 href
               )}...${chalk.blue(text)}`
             )
@@ -64,23 +62,25 @@ const cli = (path, options) => {
         .bold('🡲  Please specify the path:  ')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-mdlinks')} ${chalk.yellow.bold('<path>')}\n`
+      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('<path>')}\n`
     );
     console.log(
       `\n${chalk.bgYellow.rgb(112, 19, 147).bold('🡲  For example:  ')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-mdlinks')} ${chalk.yellow.bold('md_directory')}`
+      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('md_directory')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-mdlinks')} ${chalk.yellow.bold('README.md')}\n`
+      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('README.md')}\n`
     );
     console.log(
       `${chalk.bgYellow.rgb(112, 19, 147).bold('🡲  Run  ')}${chalk.cyan(
-        `\n${'  yp-mdlinks'} --help`
+        `\n${'  yp-.mdlinks'} --help`
       )} ${chalk.yellow.bold('for info ')}\n`
     );
   }
 };
+
+// cli('test', { stats: false, validate: false });
 
 module.exports = cli;

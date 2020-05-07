@@ -7,18 +7,19 @@ const expectMDLink = /\[([^\]]*)\]\(([^)]*)\)/g;
 const filesMDLinks = [];
 const filesPromises = [];
 const linkUrlsPromises = [];
-let allMDFiles = [];
+const pathsMdFiles = [];
 
 const getLinksInDirectoryFilesMD = (route) =>
   fs.readdirSync(getPath(route)).forEach((file) => {
     const newRoute = `${route}/${file}`;
     if (isDirectory(newRoute)) getLinksInDirectoryFilesMD(newRoute);
-    if (isFile(newRoute) && checkMD(newRoute)) allMDFiles.push(newRoute);
+    if (isFile(newRoute) && checkMD(newRoute))
+      pathsMdFiles.push(getPath(newRoute));
   });
 
 const getLinksInFileMd = (file) =>
   new Promise((resolve, reject) => {
-    fs.readFile(getPath(file), 'utf8', (err, data) => {
+    fs.readFile(file, 'utf8', (err, data) => {
       if (data && Array.isArray(data.match(expectMDLink))) {
         const links = data
           .match(expectMDLink)
@@ -56,27 +57,51 @@ const mdLinks = (route, options) =>
       const pathRoute = getPath(route);
       if (fs.existsSync(pathRoute) && !!fs.lstatSync(pathRoute)) {
         if (isDirectory(pathRoute)) getLinksInDirectoryFilesMD(route);
-        if (isFile(pathRoute) && checkMD(pathRoute)) allMDFiles = [route];
-        allMDFiles
+        if (isFile(pathRoute) && checkMD(pathRoute))
+          pathsMdFiles.push(pathRoute);
+        pathsMdFiles
           .reverse()
           .forEach((file) => filesPromises.push(getLinksInFileMd(file)));
         Promise.all(filesPromises)
           .then((res) => res[filesPromises.length - 1])
           .then((links) => {
-            if (Array.isArray(links) && !!options && options.validate) {
-              links.forEach(({ id, href }) =>
-                linkUrlsPromises.push(linkValidate(id, href))
+            if (Array.isArray(links)) {
+              if (!!options && options.validate) {
+                links.forEach(({ id, href }) =>
+                  linkUrlsPromises.push(linkValidate(id, href))
+                );
+                Promise.all(linkUrlsPromises)
+                  .then((stats) => {
+                    const linksWithStats = links.map((link) => ({
+                      ...link,
+                      ...stats.find(({ id }) => id === link.id),
+                    }));
+                    resolve(linksWithStats);
+                  })
+                  .catch(() =>
+                    reject(new Error(`NOT founds links to validate ${route}`))
+                  );
+              } else resolve(links);
+            } else
+              reject(
+                new Error(
+                  `${chalk
+                    .bgRgb(211, 246, 18)
+                    .rgb(228, 13, 222)
+                    .bold('NOT found md files at')} ${chalk.yellow(route)}`
+                )
               );
-              Promise.all(linkUrlsPromises).then((stats) => {
-                const linksWithStats = links.map((link) => ({
-                  ...link,
-                  ...stats.find(({ id }) => id === link.id),
-                }));
-                resolve(linksWithStats);
-              });
-            } else resolve(links);
           })
-          .catch(() => reject(new Error(`${route}`)));
+          .catch(() =>
+            reject(
+              new Error(
+                `${chalk
+                  .bgRgb(211, 246, 18)
+                  .rgb(228, 13, 222)
+                  .bold('NOT found links')} ${chalk.yellow(route)}`
+              )
+            )
+          );
       } else
         reject(
           new Error(
@@ -98,4 +123,8 @@ const mdLinks = (route, options) =>
       );
   });
 
-module.exports = mdLinks;
+// mdLinks('lib', { validate: true })
+//   .then((res) => console.log('file without validate: ', res))
+//   .catch(console.log);
+
+module.exports = { mdLinks, linkValidate };
