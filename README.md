@@ -14,43 +14,41 @@
 
 [![Npm](https://img.shields.io/badge/npm-v6.12.1-orchid)](https://www.npmjs.com/)
 
-## CLI (Command Line Interface - Interfaz de Línea de Comando)
+## CLI (Command Line Interface)
 
-<!-- <p align="center">![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif)</p> -->
-
-You can install CLI locally or globally:
+- **You can install CLI locally or globally:**
 
 ```bash
-$ npm install yp-md-links
+$ npm install yp-mdlinks
 
-$ npm install -g yp-md-links
+$ npm install -g yp-mdlinks
 ```
 
-Now, you can try whith this command:
+- **Now, you can try whith this command:**
 
 ```bash
-$ npx yp-md-links <path-to-file> [options]
+$ npx yp-mdlinks <path-to-file> [options]
 ```
 
-For example:
+_For example:_
 
 ```bash
-$ npx yp-md-links ./some/example.md
+$ npx yp-mdlinks ./some/example.md
 
 ./some/example.md http://algo.com/2/3/ Link a algo
 ./some/example.md https://otra-cosa.net/algun-doc.html algún doc
 ./some/example.md http://google.com/ Google
 ```
 
-#### OPTIONS
+#### OPTIONS 🔨
 
 ##### `-v | --validate`
 
-You can pass _validate_ option for check and validate all links in your file or files markdown:
+- **You can pass _validate_ option for check and validate all links in your file or files markdown:**
 
 ```bash
-$ npx yp-md-links ./some/example.md -v
-$ npx yp-md-links ./some/example.md --validate
+$ npx yp-mdlinks ./some/example.md -v
+$ npx yp-mdlinks ./some/example.md --validate
 
 ./some/example.md http://algo.com/2/3/ ok 200 Link to something
 ./some/example.md https://otra-cosa.net/algun-doc.html fail 404 some file
@@ -59,11 +57,11 @@ $ npx yp-md-links ./some/example.md --validate
 
 ##### `-s | --stats`
 
-You can pass _stats_ option for get information about all links in your file or files markdown:
+- **You can pass _stats_ option for get information about all links in your file or files markdown:**
 
 ```bash
-$ npx yp-md-links ./some/ -s
-$ npx yp-md-links ./some/example.md --stats
+$ npx yp-mdlinks ./some/ -s
+$ npx yp-mdlinks ./some/example.md --stats
 
 Total: 3
 Unique: 3
@@ -71,18 +69,17 @@ Unique: 3
 
 ##### `-v -s | --validate --stats`
 
-You can pass both option and get more information about all links in your file or files markdown:
+- **You can pass both option and get more information about all links in your file or files markdown:**
 
 ```bash
-$ npx yp-md-links some -v -s
-$ npx yp-md-links some/example.md --validate --stats
+$ npx yp-mdlinks some -v -s
+$ npx yp-mdlinks some/example.md --validate --stats
 
 Total: 3
 Unique: 3
 Broken: 1
-```
 
-<!-- ![ttystudio GIF](https://raw.githubusercontent.com/chjj/ttystudio/master/img/example.gif) -->
+```
 
 ---
 
@@ -90,15 +87,15 @@ Broken: 1
 
 ```javascript
 // ES6
-import mdLinks from 'yp-md-links';
+import mdLinks from 'yp-mdlinks';
 // CommonJS
-const mdLinks = require('yp-md-links');
+const mdLinks = require('yp-mdlinks');
 
 mdLinks('src')
   .then((res) => console.log('dir without validate: ', res))
   .catch(console.log);
 mdLinks('./src/', { validate: true, stats: true })
-  .then((res) => console.log('dir with validate: ', res))
+  .then((res) => console.log('dir with validate & stats: ', res))
   .catch(console.log);
 mdLinks('README.md')
   .then((res) => console.log('file without validate: ', res))
@@ -109,20 +106,26 @@ mdLinks('README.md', { validate: true })
 mdLinks('README.md', { stats: true })
   .then((res) => console.log('file with stats: ', res))
   .catch(console.log);
-mdLinks('pepe1')
-  .then((res) => console.log('dir false: ', res))
+mdLinks('assets')
+  .then((res) => console.log('dir not exist: ', res))
   .catch(console.log);
-mdLinks('read.js')
-  .then((res) => console.log('js file false: ', res))
+mdLinks('index.js')
+  .then((res) => console.log('md not correct: ', res))
   .catch(console.log);
-mdLinks('read.md')
-  .then((res) => console.log('md file false: ', res))
+mdLinks('reading.md')
+  .then((res) => console.log('md file not exist: ', res))
   .catch(console.log);
 ```
 
+<p align="center">
+  <img src="https://media.giphy.com/media/gkKXRebzbN9iBx06nx/giphy.gif">
+</p>
+
+---
+
 ### Dependencies
 
-Technologies that were used to create this project.
+> 🔃 Technologies that were used to create this project.
 
 - [x] [Git](https://github.com/yeniferPaloma?tab=repositories)
 - [x] [Npm](https://docs.npmjs.com/cli-documentation/)

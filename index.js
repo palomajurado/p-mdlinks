@@ -1,4 +1,4 @@
-const mdLinks = require('./dist/index');
+const mdLinks = require('./lib/index');
 
 // Ya que todo lo tenemos en carpetas se necesita un archivo index.js en el root del proyecto para que el usuario al instalar la libreria
 // pueda importar esta funcion sin problema. Igualmente defini una configuracion 'files' en el package.json para que solo se publiquen en npm

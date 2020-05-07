@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
-const { getPath } = require('../dist/utils');
-const { isDirectory } = require('../dist/utils');
-const { isFile } = require('../dist/utils');
-const { checkMD } = require('../dist/utils');
+const { getPath } = require('../lib/utils');
+const { isDirectory } = require('../lib/utils');
+const { isFile } = require('../lib/utils');
+const { checkMD } = require('../lib/utils');
 
 describe('Read the path', () => {
   it('Should return a absolute path', () => {

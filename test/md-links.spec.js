@@ -1,4 +1,4 @@
-const mdLinks = require('../dist/index');
+const mdLinks = require('../lib/index');
 
 describe('mdLinks: return the links of a file .md', () => {
   it('Obtained links from file .md', (done) => {
