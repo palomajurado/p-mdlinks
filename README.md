@@ -12,7 +12,7 @@
 
 ---
 
-[![Npm](https://img.shields.io/badge/npm-v2.0.2-orchid)](https://www.npmjs.com/) [![Npm](https://img.shields.io/twitter/url?color=red&label=Click%20to%20install&logo=npm&logoColor=red&style=plastic&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fyp-.mdlinks%2Fv%2F2.0.1)](https://www.npmjs.com/package/yp-.mdlinks)
+[![Npm](https://img.shields.io/badge/npm-v2.0.5-orchid)](https://www.npmjs.com/) [![Npm](https://img.shields.io/twitter/url?color=red&label=Click%20to%20install&logo=npm&logoColor=red&style=plastic&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fyp-.mdlinks%2Fv%2F2.0.1)](https://www.npmjs.com/package/yp-.mdlinks)
 
 ## CLI (Command Line Interface) 📦
 

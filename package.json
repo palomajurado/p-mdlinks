@@ -1,9 +1,6 @@
 {
-  "name": "@yeniferpaloma3773/yp-.mdlinks",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "version": "2.0.3",
+  "name": "yp-.mdlinks",
+  "version": "2.0.5",
   "description": "Test create md-links library",
   "main": "index.js",
   "scripts": {
@@ -15,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/yeniferpaloma3773/test-md-links.git"
+    "url": "https://github.com/yeniferpaloma3773/LIM012-fe-md-links"
   },
   "author": "YP",
   "license": "MIT",
   "bugs": {
-    "url": "git://github.com/yeniferpaloma3773/test-md-links/issues.git"
+    "url": "https://github.com/yeniferpaloma3773/LIM012-fe-md-links/issues/new"
   },
-  "homepage": "https://github.com/yeniferpaloma3773/test-md-links#readme",
+  "homepage": "https://yeniferpaloma3773.github.io/LIM012-fe-md-links/",
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
