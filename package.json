@@ -1,6 +1,6 @@
 {
   "name": "p-mdlinks",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Test create md-links library",
   "main": "index.js",
   "scripts": {

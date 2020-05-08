@@ -12,7 +12,8 @@
 
 ---
 
-[![Npm](https://img.shields.io/badge/npm-v2.1.5-orchid)](https://www.npmjs.com/) [![Npm](https://img.shields.io/twitter/url?color=red&label=Click%20to%20install&logo=npm&logoColor=red&style=plastic&url=https%3A%2F%2Fwww.npmjs.com%2Fpackage%2Fp-mdlinks%2Fv%2F2.0.1)](https://www.npmjs.com/package/p-mdlinks)
+[![npm](https://img.shields.io/npm/v/p-mdlinks?color=rgb%28241%2C%2082%2C%200%29&label=Click%20to%20install&logo=npm&logoColor=rgb%28241%2C%2082%2C%200%29&style=plastic)](https://www.npmjs.com/package/p-mdlinks) [![Github developer](https://img.shields.io/twitter/url?color=rgb%28114%2C%20248%2C%2097%29&label=Paloma&logo=github&logoColor=rgb%28114%2C%20248%2C%2097%29&style=plastic&url=https%3A%2F%2Fgithub.com%2Fyeniferpaloma3773%3Ftab%3Drepositories)](https://github.com/yeniferpaloma3773?tab=repositories)
+[![Yutube DEMOS](https://img.shields.io/twitter/url?color=rgb%28255%2C%200%2C%200%29&label=Demos&logo=youtube&logoColor=rgb%28255%2C%200%2C%200%29&style=plastic&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DwRivvzrZXic)](https://www.youtube.com/watch?v=wRivvzrZXic)
 
 ## CLI (Command Line Interface) 📦
 
