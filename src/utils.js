@@ -14,14 +14,14 @@ const ext = [
   'Rmd',
 ];
 
-const checkMD = (file) =>
-  ext.some((v) => v === basename(file).split('.').pop());
-const isDirectory = (route) =>
-  !!fs.lstatSync(route) && fs.lstatSync(route).isDirectory();
-const isFile = (route) => !!fs.lstatSync(route) && fs.statSync(route).isFile();
-const getPath = (route) => join(process.cwd(), route);
-const createId = (file, index) =>
-  `${basename(file).split('.').shift()}-${index + 1}`;
+const checkMD = (path) =>
+  ext.some((v) => v === basename(path).split('.').pop());
+const isDirectory = (path) =>
+  !!fs.lstatSync(path) && fs.lstatSync(path).isDirectory();
+const isFile = (path) => !!fs.lstatSync(path) && fs.statSync(path).isFile();
+const getPath = (path) => join(process.cwd(), path);
+const createId = (path, index) =>
+  `${basename(path).split('.').shift()}-${index + 1}`;
 
 module.exports = {
   checkMD,
