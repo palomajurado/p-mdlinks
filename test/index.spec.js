@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { linkValidate } from '../lib/index';
+import { linkValidate } from '../lib/index.js';
 jest.mock('axios');
 
 // we want a fresh start after each test

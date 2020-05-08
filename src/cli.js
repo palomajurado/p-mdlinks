@@ -62,25 +62,23 @@ const cli = (path, options) => {
         .bold('🡲  Please specify the path:  ')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('<path>')}\n`
+      `  ${chalk.cyan('p-mdlinks')} ${chalk.yellow.bold('<path>')}\n`
     );
     console.log(
       `\n${chalk.bgYellow.rgb(112, 19, 147).bold('🡲  For example:  ')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('md_directory')}`
+      `  ${chalk.cyan('p-mdlinks')} ${chalk.yellow.bold('md_directory')}`
     );
     console.log(
-      `  ${chalk.cyan('yp-.mdlinks')} ${chalk.yellow.bold('README.md')}\n`
+      `  ${chalk.cyan('p-mdlinks')} ${chalk.yellow.bold('README.md')}\n`
     );
     console.log(
       `${chalk.bgYellow.rgb(112, 19, 147).bold('🡲  Run  ')}${chalk.cyan(
-        `\n${'  yp-.mdlinks'} --help`
+        `\n${'  p-mdlinks'} --help`
       )} ${chalk.yellow.bold('for info ')}\n`
     );
   }
 };
-
-// cli('test', { stats: false, validate: false });
 
 module.exports = cli;

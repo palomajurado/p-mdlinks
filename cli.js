@@ -6,7 +6,7 @@ const mdLinksCLI = require('./lib/cli');
 const packageJson = require('./package.json');
 
 const program = new commander.Command(packageJson.name)
-  .version(chalk.magenta.bold('packageJson.version'))
+  .version(chalk.magenta.bold(packageJson.version))
   .arguments('<path>')
   .usage(`${chalk.green('<path>')} [options]`)
   .option('-v, --validate')
