@@ -102,17 +102,14 @@ const mdLinks = require('p-mdlinks');
 mdLinks('src')
   .then((res) => console.log('dir without validate: ', res))
   .catch(console.log);
-mdLinks('./src/', { validate: true, stats: true })
-  .then((res) => console.log('dir with validate & stats: ', res))
+mdLinks('./src', { validate: true })
+  .then((res) => console.log('dir with validate: ', res))
   .catch(console.log);
 mdLinks('README.md')
   .then((res) => console.log('file without validate: ', res))
   .catch(console.log);
-mdLinks('README.md', { validate: true })
+mdLinks('./README.md', { validate: true })
   .then((res) => console.log('file with validate: ', res))
-  .catch(console.log);
-mdLinks('README.md', { stats: true })
-  .then((res) => console.log('file with stats: ', res))
   .catch(console.log);
 mdLinks('assets')
   .then((res) => console.log('dir not exist: ', res))
