@@ -116,5 +116,8 @@ const mdLinks = (route, options) =>
   });
 
 /* ------------------------------------ */
+// mdLinks('README.md')
+//   .then((res) => console.log('file without validate: ', res))
+//   .catch(console.log);
 
 module.exports = { mdLinks, linkValidate };

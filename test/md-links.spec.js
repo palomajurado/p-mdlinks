@@ -1,4 +1,4 @@
-import { mdLinks } from '../lib/index.js';
+import { mdLinks } from '../lib/index';
 
 describe('mdLinks: return the links of a file .md', () => {
   it('Obtained links from file .md', (done) => {

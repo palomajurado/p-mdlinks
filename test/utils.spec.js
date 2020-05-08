@@ -1,5 +1,4 @@
-/* eslint-disable prettier/prettier */
-import { getPath, isDirectory, isFile, checkMD } from '../lib/utils.js';
+import { getPath, isDirectory, isFile, checkMD, createId } from '../lib/utils';
 
 describe('Read the path', () => {
   it('Should return a absolute path', () => {
@@ -48,5 +47,11 @@ describe('Cheking if the file is markdown', () => {
   });
   it('Should be a markDown file', () => {
     expect(checkMD('src/index.js')).toBe(false);
+  });
+});
+
+describe('Cheking if the file matchs de id name', () => {
+  it('Should be match the name of file with an index start at 1 asc', () => {
+    expect(createId(getPath('README.md'), 0)).toBe('README-1');
   });
 });
