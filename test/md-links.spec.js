@@ -1,4 +1,4 @@
-const mdLinks = require('../dist/index');
+import { mdLinks } from '../lib/index';
 
 describe('mdLinks: return the links of a file .md', () => {
   it('Obtained links from file .md', (done) => {
@@ -27,7 +27,7 @@ describe('mdLinks: return the links of a file .md', () => {
         },
         {
           id: 'example-4',
-          href: 'https://developer.mozijuanitolla.org/es/docs/Web/JavaScript',
+          href: 'https://developer.mozilla.org/es/docs/Web/JavaScript',
           text: 'Javascript',
           file:
             'C:\\Users\\Pc\\Desktop\\markDown\\LIM012-fe-md-links\\test\\example.md',

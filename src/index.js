@@ -9,14 +9,16 @@ const filesPromises = [];
 const linksValidatePromises = [];
 const pathsMdFiles = [];
 
+/* ------------------------------------ */
 const getFilesMdInDir = (route) =>
   fs.readdirSync(getPath(route)).forEach((fileOrDir) => {
-    const newRoute = `${route}\\${fileOrDir}`;
+    const newRoute = `${route}/${fileOrDir}`;
     if (isDirectory(newRoute)) getFilesMdInDir(newRoute);
     if (isFile(newRoute) && checkMD(newRoute))
       pathsMdFiles.push(getPath(newRoute));
   });
 
+/* ------------------------------------ */
 const getLinksInFileMd = (filePath) =>
   new Promise((resolve, reject) => {
     fs.readFile(filePath, 'utf8', (err, fileData) => {
@@ -40,6 +42,7 @@ const getLinksInFileMd = (filePath) =>
     });
   });
 
+/* ------------------------------------ */
 const linkValidate = (id, url) =>
   new Promise((resolve) =>
     axios(url)
@@ -49,45 +52,69 @@ const linkValidate = (id, url) =>
       .catch(() => resolve({ id, status: 404, statusText: 'FAIL' }))
   );
 
+/* ------------------------------------ */
 const mdLinks = (route, options) =>
   new Promise((resolve, reject) => {
-    const pathRoute = getPath(route);
-    if (fs.existsSync(pathRoute)) {
-      if (isDirectory(pathRoute)) getFilesMdInDir(route);
-      if (isFile(pathRoute) && checkMD(pathRoute)) pathsMdFiles.push(pathRoute);
-      pathsMdFiles.forEach((file) =>
-        filesPromises.push(getLinksInFileMd(file))
-      );
+    if (route) {
+      const pathRoute = getPath(route);
+      if (fs.existsSync(pathRoute) && !!fs.lstatSync(pathRoute)) {
+        if (isDirectory(pathRoute)) getFilesMdInDir(route);
+        if (isFile(pathRoute) && checkMD(pathRoute))
+          pathsMdFiles.push(pathRoute);
 
-      Promise.all(filesPromises)
-        .then((res) => res.flat(Infinity))
-        .then((links) => {
-          if (Array.isArray(links) && !!options && options.validate) {
-            links.forEach(({ id, href }) =>
-              linksValidatePromises.push(linkValidate(id, href))
-            );
-            Promise.all(linksValidatePromises).then((stats) => {
-              const linksWithStats = links.map((link) => ({
-                ...link,
-                ...stats.find(({ id }) => id === link.id),
-              }));
-              resolve(linksWithStats);
-            });
-          } else resolve(links);
-        })
-        .catch(() =>
-          reject(
-            new Error(
-              `${chalk
-                .bgRgb(255, 0, 255)
-                .yellowBright.bold(
-                  " ☝  We couldn't find links in this path -->  "
-                )} ${chalk.rgb(127, 255, 255).bold.underline(route)}`
+        pathsMdFiles
+          .reverse()
+          .forEach((file) => filesPromises.push(getLinksInFileMd(file)));
+        Promise.all(filesPromises)
+          .then((res) => res.flat(Infinity))
+          .then((links) => {
+            if (Array.isArray(links)) {
+              if (!!options && options.validate) {
+                links.forEach(({ id, href }) =>
+                  linksValidatePromises.push(linkValidate(id, href))
+                );
+                Promise.all(linksValidatePromises)
+                  .then((stats) => {
+                    const linksWithStats = links.map((link) => ({
+                      ...link,
+                      ...stats.find(({ id }) => id === link.id),
+                    }));
+                    resolve(linksWithStats);
+                  })
+                  .catch(() =>
+                    reject(new Error(`NOT founds links to validate ${route}`))
+                  );
+              } else resolve(links);
+            } else
+              reject(
+                new Error(
+                  `${chalk.red('NOT found md files at')} ${chalk.yellow(route)}`
+                )
+              );
+          })
+          .catch(() =>
+            reject(
+              new Error(
+                `${chalk.red('NOT found links')} ${chalk.yellow(route)}`
+              )
+            )
+          );
+      } else
+        reject(
+          new Error(
+            chalk.red(
+              'Path:⚠️  NOT FOUND (check the NAME of DIR \\ FILE or .md)⚠️  )'
             )
           )
         );
-    } else reject(new Error('⚠️   Path: NOT FOUND ⚠️  '));
+    } else
+      reject(
+        new Error(
+          chalk.yellow.bold('---> The <path> argument is required <---\n')
+        )
+      );
   });
 
-module.exports = mdLinks;
-module.exports = linkValidate;
+/* ------------------------------------ */
+
+module.exports = { mdLinks, linkValidate };
