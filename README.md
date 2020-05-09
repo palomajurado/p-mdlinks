@@ -19,7 +19,7 @@
 
 [![Watch the video](https://storage.googleapis.com/md-links/video11.png)](https://youtu.be/kNADJomsQ3o)
 
-- **You can install CLI locally or globally:**
+- **Install the _CLI_ locally or globally:**
 
 ```bash
 $ npm install p-mdlinks
@@ -27,7 +27,7 @@ $ npm install p-mdlinks
 $ npm install -g p-mdlinks
 ```
 
-- **Now, you can try with this command:**
+- **Now, get _markdowns links_ with this command:**
 
 ```bash
 $ npx p-mdlinks <path-to-file> [options]
@@ -38,8 +38,8 @@ _For example:_
 ```bash
 $ npx p-mdlinks ./some/example.md
 
-./some/example.md http://algo.com/2/3/ Link to something
-./some/example.md https://otra-cosa.net/algun-doc.html some file
+./some/example.md http://ubu.com/2/3/ Link to something
+./some/example.md https://deco.net/algun-doc.html some file
 ./some/example.md http://google.com/ Google
 ```
 
@@ -47,20 +47,20 @@ $ npx p-mdlinks ./some/example.md
 
 ##### `-v | --validate`
 
-- **You can pass _validate_ option to check and validate all links in your file(s) markdown:**
+- **Pass _validate_ option to check & validate all markdown's link(s):**
 
 ```bash
 $ npx p-mdlinks ./some/example.md -v
 $ npx p-mdlinks ./some/example.md --validate
 
-./some/example.md http://algo.com/2/3/ ok 200 Link to something
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 some file
+./some/example.md http://ubu.com/2/3/ ok 200 Link to something
+./some/example.md https://deco.net/algun-doc.html fail 404 some file
 ./some/example.md http://google.com/ ok 301 Google
 ```
 
 ##### `-s | --stats`
 
-- **You can pass _stats_ option to get information about all links in your file(s) markdown:**
+- **Pass _stats_ option to get the total & unique(s) of markdown's link(s):**
 
 ```bash
 $ npx p-mdlinks ./some/ -s
@@ -72,7 +72,7 @@ Unique: 3
 
 ##### `-v -s | --validate --stats`
 
-- **You can pass both options and get more info about all links in your file(s) markdown:**
+- **You can pass _both_ options for totals & link's status:**
 
 ```bash
 $ npx p-mdlinks some -v -s
@@ -92,7 +92,7 @@ Broken: 1
 
 ### 🔗 Documentation
 
-- **You can _import_ or _require_ -> 'p-mdlinks', to handle your link(s) as objects, validate & stats them**
+- **_Import_ or _require_ 'p-mdlinks' to handle markdown link(s) as objects, validate & stats them also**
 
 ```javascript
 // ES6
@@ -131,7 +131,7 @@ mdLinks('reading.md')
 
 ### 🔗 Dependencies
 
-> Technologies that were used to create this project.
+> Technologies used to create this project.
 
 - [x] [Git](https://github.com/yeniferpaloma3773?tab=repositories)
 - [x] [Npm](https://docs.npmjs.com/cli-documentation/)

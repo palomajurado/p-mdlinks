@@ -1,7 +1,7 @@
 {
   "name": "p-mdlinks",
-  "version": "2.1.6",
-  "description": "Test create md-links library",
+  "version": "2.1.7",
+  "description": "MarkDown's Library",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src --color",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeniferpaloma3773/LIM012-fe-md-links"
+    "url": "https://github.com/yeniferpaloma3773/p-mdlinks"
   },
   "author": "YP",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/yeniferpaloma3773/LIM012-fe-md-links/issues/new"
+    "url": "https://github.com/yeniferpaloma3773/p-mdlinks/issues/new"
   },
-  "homepage": "https://yeniferpaloma3773.github.io/LIM012-fe-md-links/",
+  "homepage": "https://yeniferpaloma3773.github.io/p-mdlinks/",
   "dependencies": {
     "axios": "^0.19.2",
     "chalk": "^4.0.0",
