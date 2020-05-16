@@ -2,7 +2,7 @@
 'use strict';
 const commander = require('commander');
 const chalk = require('chalk');
-const mdLinksCLI = require('./lib/cli');
+const cli = require('./lib/cli');
 const packageJson = require('./package.json');
 
 const program = new commander.Command(packageJson.name)
@@ -49,13 +49,13 @@ const program = new commander.Command(packageJson.name)
 
 program.parse(process.argv);
 
-if (!program.validate && !program.stats) mdLinksCLI(process.argv[2]);
+if (!program.validate && !program.stats) cli(process.argv[2]);
 if (!!program.validate && !program.stats)
-  mdLinksCLI(process.argv[2], { validate: program.validate });
+  cli(process.argv[2], { validate: program.validate });
 if (!program.validate && !!program.stats)
-  mdLinksCLI(process.argv[2], { stats: program.stats });
+  cli(process.argv[2], { stats: program.stats });
 if (!!program.validate && !!program.stats)
-  mdLinksCLI(process.argv[2], {
+  cli(process.argv[2], {
     validate: program.validate,
     stats: program.stats,
   });

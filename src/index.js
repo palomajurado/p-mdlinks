@@ -53,38 +53,45 @@ const linkValidate = (id, url) =>
   );
 
 /* ------------------------------------ */
+const dirOrFile = (pathRoute, route) => {
+  if (isDirectory(pathRoute)) getFilesMdInDir(route);
+  if (isFile(pathRoute) && checkMD(pathRoute)) pathsMdFiles.push(pathRoute);
+  pathsMdFiles
+    .reverse()
+    .forEach((file) => filesPromises.push(getLinksInFileMd(file)));
+};
+/* ------------------------------------ */
+
+const resolveValidate = (links, resolve, reject, route) => {
+  links.forEach(({ id, href }) =>
+    linksValidatePromises.push(linkValidate(id, href))
+  );
+  Promise.all(linksValidatePromises)
+    .then((stats) => {
+      resolve(
+        links.map((link) => ({
+          ...link,
+          ...stats.find(({ id }) => id === link.id),
+        }))
+      );
+    })
+    .catch(() => reject(new Error(`NOT founds links to validate ${route}`)));
+};
+
+/* ------------------------------------ */
 const mdLinks = (route, options) =>
   new Promise((resolve, reject) => {
     if (route) {
       const pathRoute = getPath(route);
       if (fs.existsSync(pathRoute) && !!fs.lstatSync(pathRoute)) {
-        if (isDirectory(pathRoute)) getFilesMdInDir(route);
-        if (isFile(pathRoute) && checkMD(pathRoute))
-          pathsMdFiles.push(pathRoute);
-
-        pathsMdFiles
-          .reverse()
-          .forEach((file) => filesPromises.push(getLinksInFileMd(file)));
+        dirOrFile(pathRoute, route);
         Promise.all(filesPromises)
           .then((res) => res[filesPromises.length - 1])
           .then((links) => {
             if (Array.isArray(links)) {
-              if (!!options && options.validate) {
-                links.forEach(({ id, href }) =>
-                  linksValidatePromises.push(linkValidate(id, href))
-                );
-                Promise.all(linksValidatePromises)
-                  .then((stats) => {
-                    const linksWithStats = links.map((link) => ({
-                      ...link,
-                      ...stats.find(({ id }) => id === link.id),
-                    }));
-                    resolve(linksWithStats);
-                  })
-                  .catch(() =>
-                    reject(new Error(`NOT founds links to validate ${route}`))
-                  );
-              } else resolve(links);
+              if (!!options && options.validate)
+                resolveValidate(links, resolve, reject, route);
+              else resolve(links);
             } else
               reject(
                 new Error(

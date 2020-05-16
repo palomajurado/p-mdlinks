@@ -25,6 +25,7 @@ const cli = (path, options) => {
     mdLinks(path, options)
       .then((links) => {
         if (Array.isArray(links) && !!options && options.validate) {
+          //
           if (options.stats) linksStats(links, true);
           else
             links.forEach(({ file, href, status, statusText, text }) => {
@@ -80,4 +81,5 @@ const cli = (path, options) => {
     );
   }
 };
+
 module.exports = cli;
