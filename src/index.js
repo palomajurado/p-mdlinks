@@ -66,7 +66,7 @@ const mdLinks = (route, options) =>
           .reverse()
           .forEach((file) => filesPromises.push(getLinksInFileMd(file)));
         Promise.all(filesPromises)
-          .then((res) => res.flat(Infinity))
+          .then((res) => res[filesPromises.length - 1])
           .then((links) => {
             if (Array.isArray(links)) {
               if (!!options && options.validate) {
@@ -114,7 +114,5 @@ const mdLinks = (route, options) =>
         )
       );
   });
-
-/* ------------------------------------ */
 
 module.exports = { mdLinks, linkValidate };
