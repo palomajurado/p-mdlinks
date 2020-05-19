@@ -3,22 +3,22 @@ import { getPath, isDirectory, isFile, checkMD, createId } from '../lib/utils';
 describe('Read the path', () => {
   it('Should return a absolute path', () => {
     expect(getPath('./README.md')).toBe(
-      'C:\\Users\\Pc\\Desktop\\markDown\\LIM012-fe-md-links\\README.md'
+      'C:\\Users\\Pc\\Desktop\\markDown\\p-mdlinks\\README.md'
     );
   });
   it('Should return a relative path', () => {
     expect(getPath('README.md')).toBe(
-      'C:\\Users\\Pc\\Desktop\\markDown\\LIM012-fe-md-links\\README.md'
+      'C:\\Users\\Pc\\Desktop\\markDown\\p-mdlinks\\README.md'
     );
   });
   it('Should return an absolute path directory', () => {
     expect(getPath('./src')).toBe(
-      'C:\\Users\\Pc\\Desktop\\markDown\\LIM012-fe-md-links\\src'
+      'C:\\Users\\Pc\\Desktop\\markDown\\p-mdlinks\\src'
     );
   });
   it('Should return a relative path directory', () => {
     expect(getPath('src')).toBe(
-      'C:\\Users\\Pc\\Desktop\\markDown\\LIM012-fe-md-links\\src'
+      'C:\\Users\\Pc\\Desktop\\markDown\\p-mdlinks\\src'
     );
   });
 });

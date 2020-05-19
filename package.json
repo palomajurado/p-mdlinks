@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yeniferpaloma3773/p-mdlinks"
+    "url": "git+https://github.com/yeniferpaloma3773/p-mdlinks.git"
   },
   "author": "YP",
   "license": "MIT",
@@ -55,5 +55,9 @@
     "lib/cli.js",
     "lib/index.js",
     "lib/utils.js"
-  ]
+  ],
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }
