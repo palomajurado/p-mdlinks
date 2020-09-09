@@ -22,7 +22,7 @@
 - **Install the _CLI_ locally or globally:**
 
 ```bash
-$ npm install -g yeniferpaloma3773/p-mdlinks
+$ npm install -g palomajurado/p-mdlinks
 
 $ npm install @palomania/mdlinks
 
